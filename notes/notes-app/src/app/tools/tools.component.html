@@ -1,0 +1,7 @@
+<p [style.background]='bckColor'>
+    Color is: {{color}}
+</p>
+
+<input type="text" [(ngModel)]= "color">
+
+<button (click)='setColor()' mat-icon-button> <mat-icon>add</mat-icon></button>
