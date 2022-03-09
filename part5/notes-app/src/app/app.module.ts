@@ -14,8 +14,6 @@ import { ToolsComponent } from './tools/tools.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddValuePipe } from './add-value.pipe';
 import { FilterComponent } from './filter/filter.component';
-import { ChangeColorPipe } from './change-color.pipe';
-import { DirDirective } from './dir.directive';
 
 @NgModule({
   declarations: [
@@ -23,9 +21,7 @@ import { DirDirective } from './dir.directive';
     NoteComponent,
     ToolsComponent,
     AddValuePipe,
-    FilterComponent,
-    ChangeColorPipe,
-    DirDirective
+    FilterComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +33,7 @@ import { DirDirective } from './dir.directive';
     FormsModule,
     MatCardModule
   ],
-  providers: [DirDirective],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

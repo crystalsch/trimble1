@@ -1,3 +1,36 @@
+<!-- <app-filter></app-filter>
 <app-note></app-note>
 <app-tools></app-tools>
 
+<p>
+    Sample {{text | uppercase}}
+</p>
+<p>
+    <br>
+    Sample {{dateTest | date:"longTime" | uppercase}}
+    <br>
+    my number is:{{myValue|addValue:22}}
+</p> -->
+
+<div *ngFor="let fruit of fruits; let even = even">
+    <p>{{fruit | uppercase }}</p>
+</div>
+<div *ngFor="let d of dates; let even = even">
+    <p>{{d | date :'short' }}</p>
+</div>
+
+<p>
+    My text is: {{inter|changeColor}}
+</p>
+
+<input type="text" [(ngModel)]='inter'>
+
+<p appDir>
+    Highlight me
+</p>
+<p appDir>
+    Highlight me too!
+</p>
+<p appDir>
+    Highlight me too!
+</p>
