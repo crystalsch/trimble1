@@ -14,9 +14,11 @@ import { ToolsComponent } from './tools/tools.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddValuePipe } from './add-value.pipe';
 import { FilterComponent } from './filter/filter.component';
-import { ChangeColorPipe } from './change-color.pipe';
-import { DirDirective } from './dir.directive';
 import { AppRoutingModule } from './app-routing.module';
+import { AddNoteComponent } from './add-note/add-note.component';
+import { HomeComponent } from './home/home.component';
+import { Part6Component } from './part6/part6.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -25,8 +27,9 @@ import { AppRoutingModule } from './app-routing.module';
     ToolsComponent,
     AddValuePipe,
     FilterComponent,
-    ChangeColorPipe,
-    DirDirective
+    AddNoteComponent,
+    HomeComponent,
+    Part6Component
   ],
   imports: [
     BrowserModule,
@@ -37,9 +40,10 @@ import { AppRoutingModule } from './app-routing.module';
     MatFormFieldModule,
     FormsModule,
     MatCardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSelectModule
   ],
-  providers: [DirDirective],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

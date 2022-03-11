@@ -1,0 +1,12 @@
+<app-filter></app-filter>
+<div>
+    <app-note></app-note>
+    <app-tools></app-tools>
+</div>
+<form>
+    <label>Parameter: </label>
+    <mat-form-field>
+        <input required minlength="1" matInput name="inputNote" [(ngModel)]="par" />
+    </mat-form-field>
+</form>
+<button [routerLink]="['/app-part6',par]" mat-button>Add</button>
