@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div id="card-container">
+    <app-tools></app-tools>
+    <mat-card *ngFor="let note of notes">
+        <mat-card-header>
+            {{note.title}}
+        </mat-card-header>
+
+        <mat-card-content>
+            {{note.description}}
+        </mat-card-content>
+        <div class="comands">
+            <button class="btn"><i class="fa fa-edit"></i></button>
+            <button class="btn"><i class="fa fa-trash"></i></button>
+        </div>
+    </mat-card>
+</div>

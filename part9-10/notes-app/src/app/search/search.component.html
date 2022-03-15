@@ -1,0 +1,7 @@
+<form>
+    <label>Search: </label>
+    <mat-form-field>
+        <input required minlength="1" matInput name="inputNote" [(ngModel)]="word"/>
+    </mat-form-field>
+</form>
+<button mat-button (click)="selectWord(word)" >Add</button>

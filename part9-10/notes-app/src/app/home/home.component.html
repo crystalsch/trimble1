@@ -1,0 +1,8 @@
+<app-filter (emitSelectedFilter)="receiveCategory($event)"></app-filter>
+<app-search (emitSelectedWord)="receiveWord($event)"></app-search>
+<div>
+    <app-note [selectedCategoryId]="categoryId" [selectedWord]="word"></app-note>
+    <!-- <app-tools></app-tools> -->
+</div>
+
+

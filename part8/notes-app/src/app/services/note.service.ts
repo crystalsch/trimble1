@@ -26,7 +26,7 @@ export class NoteService {
     {
       id: "Id3",
       title: "Third note",
-      description: "This is the description for the third note",
+      description: "This is the description for the third note asa",
       category: '3'
     }
   ];
