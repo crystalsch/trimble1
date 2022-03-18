@@ -25,7 +25,6 @@ export class AddNoteComponent implements OnInit {
     }
     console.log(this.type)
     this.noteService.addNote(note).subscribe();
-    
   }
 
   ngOnInit(): void {

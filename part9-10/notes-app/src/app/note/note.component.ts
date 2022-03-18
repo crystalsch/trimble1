@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Note } from '../note';
 import { NoteService } from '../services/note.service';
 
@@ -10,16 +10,37 @@ import { NoteService } from '../services/note.service';
 export class NoteComponent implements OnInit, OnChanges {
 
   notes: Note[];
+  note:Note;
 
+  @Output() emitSelectedNote = new EventEmitter<string>();
   @Input() selectedCategoryId: string;
+  @Input() selectedNote: string;
   @Input() selectedWord: string;
 
   constructor(
     private noteService: NoteService
   ) { }
+
+  selectFilter(noteId: string) {
+    this.emitSelectedNote.emit(noteId);
+    console.log(noteId);
+  }
+
+  selectId(noteId: string) {
+    this.emitSelectedNote.emit(noteId);
+    console.log(noteId);
+  }
+
+  getId(id: string) {
+    console.log(id);
+    this.noteService.deleteNote(id).subscribe();
+    this.noteService.getNotes().subscribe((note) => {
+      this.notes = note;
+    });
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.noteService.getFilteredNotes(this.selectedCategoryId).subscribe((notes:Note[])=>{this.notes=notes})
-
   }
 
   ngOnInit(): void {

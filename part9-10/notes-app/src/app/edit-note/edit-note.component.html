@@ -1,25 +1,25 @@
-<h1>Edit note </h1>
+<h1>Add a note </h1>
 <label>Title:</label>
 <form>
     <mat-form-field>
-        <input required minlength="1" matInput name="inputNote" [(ngModel)]="title" placeholder="Enter your title" />
+        <input required minlength="1" matInput name="inputNote" [(ngModel)]="note.title" placeholder="Title" />
     </mat-form-field>
 </form>
 
 <label>Description:</label>
 <mat-form-field>
-    <textarea required minlength="1" matInput name="inputNote" [(ngModel)]="description"
-        placeholder="Enter your description"></textarea>
+    <textarea required minlength="1" matInput name="inputNote" [(ngModel)]="note.description"
+        placeholder="Description"></textarea>
 </mat-form-field>
 
 <h4>Select Note Type</h4>
 <mat-form-field appearance="fill">
     <mat-label>Note Types</mat-label>
-    <mat-select [(ngModel)]="type">
+    <mat-select [(ngModel)]="note.categoryId">
         <mat-option *ngFor="let category of categories" [value]="category.id" >
             {{category.name}}
         </mat-option>
     </mat-select>
 </mat-form-field>
 
-<button mat-button routerLink="app-home" (click)="addNote()">Add</button>
+<button mat-button routerLink="app-home" (click)="editNote">Add</button>

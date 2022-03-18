@@ -9,9 +9,12 @@
         <mat-card-content>
             {{note.description}}
         </mat-card-content>
-        <div class="comands">
-            <button class="btn"><i class="fa fa-edit"></i></button>
-            <button class="btn"><i class="fa fa-trash"></i></button>
-        </div>
+        <mat-card-footer>
+            <div class="comands">
+                <button class="btn" [routerLink]="['app-edit-note',note.id]"><i class="fa fa-edit"></i></button>
+                <button class="btn" (click)="getId(note.id)"><i class="fa fa-trash"></i></button>
+            </div>
+        </mat-card-footer>
+
     </mat-card>
 </div>

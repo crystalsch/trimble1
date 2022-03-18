@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NotesAPI</name>
+    </assembly>
+    <members>
+        <member name="M:NotesAPI.Controllers.NotesController.Get">
+            <summary>
+            Get all notes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NotesAPI.Controllers.WeatherForecastController.Get(System.Int32,System.Int32)">
+            <summary>
+            Vremea pe 5 zile
+            </summary>
+            <returns></returns>
+            <param name="date">Date</param>
+            <param name="temp">TemperatureC</param>
+            <param>Summary</param>
+        </member>
+    </members>
+</doc>

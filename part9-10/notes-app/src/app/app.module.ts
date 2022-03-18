@@ -23,6 +23,7 @@ import { SearchComponent } from './search/search.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpMockApiInterceptor } from './services/http-mock-api.interceptor';
+import { EditNoteComponent } from './edit-note/edit-note.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpMockApiInterceptor } from './services/http-mock-api.interceptor';
     AddNoteComponent,
     HomeComponent,
     Part6Component,
-    SearchComponent
+    SearchComponent,
+    EditNoteComponent
   ],
   imports: [
     BrowserModule,

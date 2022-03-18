@@ -1,7 +1,7 @@
 import { animate } from '@angular/animations';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ReturnStatement } from '@angular/compiler';
-import { Injectable } from '@angular/core';
+import { outputAst, ReturnStatement } from '@angular/compiler';
+import { Injectable, Output } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Category } from '../category';
 import { Note } from '../note';
@@ -63,14 +63,25 @@ export class NoteService {
   }
 
   addNote(note: Note) {
-    return this.httpClient.post(this.baseUrl + "/note", note, this.httpOptions);
+    return this.httpClient.post(this.baseUrl + "/notes", note, this.httpOptions);
   }
 
+  editNote(note: Note) {
+    return this.httpClient.put(this.baseUrl + "/notes"+ note.id, note, this.httpOptions);
+  }
 
   getNotes(): Observable<Note[]> {
     return this.httpClient.get<Note[]>(this.baseUrl + `/notes`, this.httpOptions);
   }
 
+  getNote(noteId:string): Observable<Note> {
+    return this.httpClient.get<Note>(this.baseUrl + `/notes/` + noteId, this.httpOptions);
+  }
+
+  deleteNote(noteId: string): Observable<Note> {
+    let idUrl = '/notes/' + noteId;
+    return this.httpClient.delete<Note>(this.baseUrl + idUrl);
+  }
 
   serviceCall() {
     console.log("Note service was called");
@@ -79,7 +90,7 @@ export class NoteService {
   getCategory() {
     return this.categories;
   }
-  
+
   // getNotes() {
   //   return this.notes;
   // }
