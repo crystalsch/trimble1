@@ -62,6 +62,17 @@ export class NoteService {
       );
   }
 
+  getSpecificNotes(word: string): Observable<Note[]> {
+    return this.httpClient
+      .get<Note[]>(
+        this.baseUrl + `/notes`,
+        this.httpOptions
+      )
+      .pipe(
+        map((notes: Note[]) => { return notes.filter((note) => note.title.includes(word) || note.description.includes(word)) })
+      );
+  }
+
   addNote(note: Note) {
     return this.httpClient.post(this.baseUrl + "/notes", note, this.httpOptions);
   }

@@ -41,6 +41,7 @@ export class NoteComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.noteService.getFilteredNotes(this.selectedCategoryId).subscribe((notes:Note[])=>{this.notes=notes})
+    this.noteService.getSpecificNotes(this.selectedWord).subscribe((notes:Note[])=>{this.notes=notes})
   }
 
   ngOnInit(): void {

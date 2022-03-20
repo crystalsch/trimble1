@@ -18,7 +18,6 @@ export class SearchComponent implements OnInit{
     console.log(word);
   }
 
-
   ngOnInit(): void {
   }
 
