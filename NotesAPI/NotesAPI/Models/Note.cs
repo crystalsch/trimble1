@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,9 +8,11 @@ namespace NotesAPI.Models
 {
     public class Note
     {
-        string Id { get; set; }
-        string Title { get; set; }
-        string Description { get; set; }
-        string CategoryId { get; set; }
+        public Guid Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string CategoryId { get; set; }
+    
+       [Required] public Guid? OwnerId { get; set; }
     }
 }

@@ -4,7 +4,7 @@
         <name>NotesAPI</name>
     </assembly>
     <members>
-        <member name="M:NotesAPI.Controllers.NotesController.Get">
+        <member name="M:NotesAPI.Controllers.NotesController.GetNotes">
             <summary>
             Get all notes
             </summary>
