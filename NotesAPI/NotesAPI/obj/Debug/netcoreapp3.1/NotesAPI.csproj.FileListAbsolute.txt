@@ -1,6 +1,12 @@
 E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\appsettings.json
 E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.exe
+E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.deps.json
+E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.runtimeconfig.json
+E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.runtimeconfig.dev.json
+E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.dll
+E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.pdb
+E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.xml
 E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
 E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -18,10 +24,5 @@ E:\Trimble\trimble1\NotesAPI\NotesAPI\obj\Debug\netcoreapp3.1\NotesAPI.RazorTarg
 E:\Trimble\trimble1\NotesAPI\NotesAPI\obj\Debug\netcoreapp3.1\NotesAPI.dll
 E:\Trimble\trimble1\NotesAPI\NotesAPI\obj\Debug\netcoreapp3.1\NotesAPI.xml
 E:\Trimble\trimble1\NotesAPI\NotesAPI\obj\Debug\netcoreapp3.1\NotesAPI.pdb
-E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.deps.json
-E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.runtimeconfig.json
-E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.runtimeconfig.dev.json
-E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.dll
-E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.pdb
-E:\Trimble\trimble1\NotesAPI\NotesAPI\bin\Debug\netcoreapp3.1\NotesAPI.xml
 E:\Trimble\trimble1\NotesAPI\NotesAPI\obj\Debug\netcoreapp3.1\NotesAPI.genruntimeconfig.cache
+E:\Trimble\trimble1\NotesAPI\NotesAPI\obj\Debug\netcoreapp3.1\NotesAPI.csproj.AssemblyReference.cache

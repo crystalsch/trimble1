@@ -1,64 +1,52 @@
-﻿//using Microsoft.AspNetCore.Http;
-//using Microsoft.AspNetCore.Mvc;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-//namespace NotesAPI.Controllers
-//{
-//    [Route("[controller]")]
-//    [ApiController]
-//    public class CategoriesController : ControllerBase
-//    {
+namespace NotesAPI.Controllers
+{
+    [Route("[controller]")]
+    [ApiController]
+    public class CategoriesController : ControllerBase
+    {
 
-//        [HttpGet]
-//        public IActionResult Get()
-//        {
-//            //List<Category> categories = new List<Category>();
-//            //categories.Add(new Category("1", "To Do"));
-//            //categories.Add(new Category("2", "Done"));
-//            //categories.Add(new Category("3", "Doing"));
+        static List<Category> _cat = new List<Category> { new Category { Id = Guid.NewGuid(), Name = "Done" },
+        new Category { Id = Guid.NewGuid(), Name = "To Do" },
+        new Category { Id = Guid.NewGuid(), Name = "Doing" }
+        };
 
-//            //return Ok(categories);
-//        }
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_cat);
+        }
 
-//        [HttpGet("{id}")]
-//        public IActionResult GetOne(string id)
-//        {
-//            List<Category> categories = new List<Category>();
-//            //categories.add(new Category("1", "to do"));
-//            //categories.add(new Category("2", "done"));
-//            //categories.add(new Category("3", "doing"));
+        [HttpGet("{id}")]
+        public IActionResult GetOne(Guid id)
+        {
 
-//            Category selectedCategory = categories.Find(category => category.Id == id);
+            Category selectedCategory = _cat.Find(x => x.Id == id);
 
-//            return Ok(selectedCategory);
-//        }
+            return Ok(selectedCategory);
+        }
 
-//        //[HttpPost]
-//        //public IActionResult Post([FromBody] CategoryRequest newCategory)
-//        //{
-//        //    List<Category> categories = new List<Category>();
-//        //    categories.add(new Category("1", "to do"));
-//        //    categories.add(new Category("2", "done"));
-//        //    categories.add(new Category("3", "doing"));
-//        //    categories.Add(newCategory);
-//        //    return Ok(categories);
-//        //}
+        [HttpPost]
+        public IActionResult Post([FromBody] Category a)
+        {
+            _cat.Add(a);
+            return Ok(_cat);
+        }
 
-//        [HttpDelete("{id}")]
-//        public IActionResult Delete(string id)
-//        {
-//            List<Category> categories = new List<Category>();
-//            //categories.Add(new Category("1", "To Do"));
-//            //categories.Add(new Category("2", "Done"));
-//            //categories.Add(new Category("3", "Doing"));
-//            Category selectedCategory = categories.Find(category => category.Id == id);
-//            categories.Remove(selectedCategory);
-//            return Ok(categories);
-//        }
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            Category selectedCategory = _cat.Find(category => category.Id == id);
+            _cat.Remove(selectedCategory);
+            return Ok(_cat);
+        }
 
 
-//    }
-//}
+    }
+}

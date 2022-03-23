@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NotesAPI.Models;
+using NotesAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,43 +13,116 @@ namespace NotesAPI.Controllers
     [ApiController]
     public class NotesController : ControllerBase
     {
-        static List<Note> _notes = new List<Note> { new Note { Id = Guid.NewGuid(), CategoryId = "1", OwnerId = Guid.NewGuid(), Title = "First Note", Description = "First Note Description" },
-        new Note { Id = Guid.NewGuid(), CategoryId = "1", OwnerId = new Guid("2ADEA345-7F7A-4313-87AE-F05E8B2DE678"), Title = "Second Note", Description = "Second Note Description" },
-        new Note { Id = Guid.NewGuid(), CategoryId = "1", OwnerId = Guid.NewGuid(), Title = "Third Note", Description = "Third Note Description" },
-        new Note { Id = Guid.NewGuid(), CategoryId = "1", OwnerId = Guid.NewGuid(), Title = "Fourth Note", Description = "Fourth Note Description" },
-        new Note { Id = Guid.NewGuid(), CategoryId = "1", OwnerId = Guid.NewGuid(), Title = "Fifth Note", Description = "Fifth Note Description" }
-        };
+        INoteCollectionService _noteCollectionService;
+        public NotesController(INoteCollectionService noteCollectionService)
+       {
+        _noteCollectionService = noteCollectionService ?? throw new ArgumentNullException(nameof(noteCollectionService));
+        }
 
-        /// <summary>
-        /// Get all notes
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public IActionResult GetNotes()
+        //[HttpPut("{id}")]
+        //    public IActionResult UpdateNote(Guid id, [FromBody] Note note)
+        //    {
+        //        if (note == null)
+        //        {
+        //            return BadRequest("note can't be null");
+        //        }
+        //        int index = _notes.FindIndex(n => n.Id == id);
+        //        if (index == -1)
+        //        {
+        //            return CreateNotes(note);
+        //            //return NotFound("index not found");
+        //        }
+        //        note.Id = id;
+        //        _notes[index] = note;
+        //        return Ok(_notes);
+        //    }
+
+        [HttpPut("{id},{idO}")]
+        public IActionResult UpdateNote(Guid id,Guid idO, [FromBody] Note note)
         {
+            List<Note> _notes;
+            _notes = _noteCollectionService.GetAll();
+            if (note == null)
+            {
+                return BadRequest("note can't be null");
+            }
+            int index = _notes.FindIndex(x => x.Id == id && x.OwnerId == idO);
+            if (index == -1)
+            {
+                
+                return NotFound("note not found");
+            }
+            note.Id = id;
+            note.OwnerId = idO;
+            _notes[index] = note;
             return Ok(_notes);
         }
+
+        [HttpDelete("{id},{idO}")]
+        public IActionResult DeleteNote(Guid id, Guid idO)
+        {
+            List<Note> _notes;
+            _notes = _noteCollectionService.GetAll();
+            int index = _notes.FindIndex(x => x.Id == id && x.OwnerId == idO);
+            if (index == -1)
+            {
+                return NotFound("note not found");
+            }
+            _notes.RemoveAt(index);
+            return Ok("the note was deleted");
+        }
+
+        [HttpDelete("{idO}")]
+        public IActionResult DeleteAllNotes(Guid idO)
+        {
+            List<Note> _notes;
+            _notes = _noteCollectionService.GetAll();
+            int index = _notes.FindIndex(x => x.OwnerId == idO);
+            if (index == -1)
+            {
+                return NotFound("note not found");
+            }
+            _notes.RemoveAll(x => x.OwnerId == idO);
+            return Ok("the notes was deleted");
+        }
+
+
+        //    [HttpDelete("{id}")]
+        //    public IActionResult DeleteNote(Guid id)
+        //    {
+        //        int index = _notes.FindIndex(x => x.Id == id);
+        //        if (index == -1)
+        //        {
+        //            return NotFound("the note wasn't found");
+        //        }
+        //        _notes.RemoveAt(index);
+        //        return Ok("the note was deleted");
+        //    }
+        //    /// <summary>
+        //    /// Get all notes
+        //    /// </summary>
+        //    /// <returns></returns>
+        //    [HttpGet]
+        //    public IActionResult GetNotes()
+        //    {
+        //        return Ok(_notes);
+        //    }
 
         [HttpPost]
         public IActionResult CreateNotes([FromBody] Note note)
         {
-            _notes.Add(note);
-            return Ok(_notes);
+            if (note == null)
+                return BadRequest("Note is null");
+            _noteCollectionService.Create(note);
+            return Ok(note);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetOne(Guid id)
+        [HttpGet]
+        public IActionResult GetNotes()
         {
-            List<Note> selectedNotes = _notes.FindAll(_notes => _notes.OwnerId == id);
-            return Ok(selectedNotes);
+            return Ok(_noteCollectionService.GetAll());
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetOneNote(Guid id)
-        {
-            Note selectedNotes = _notes.Find(_notes => _notes.Id == id);
-            return Ok(selectedNotes);
-        }
 
     }
 }

@@ -4,12 +4,6 @@
         <name>NotesAPI</name>
     </assembly>
     <members>
-        <member name="M:NotesAPI.Controllers.NotesController.GetNotes">
-            <summary>
-            Get all notes
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:NotesAPI.Controllers.WeatherForecastController.Get(System.Int32,System.Int32)">
             <summary>
             Vremea pe 5 zile
