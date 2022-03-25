@@ -13,12 +13,6 @@ namespace NotesAPI.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string CategoryId { get; set; }
-    
-       [Required] public Guid? OwnerId { get; set; }
-
-        public static implicit operator Note(note v)
-        {
-            throw new NotImplementedException();
-        }
+        public Guid? OwnerId { get; set; }
     }
 }

@@ -8,6 +8,7 @@ namespace NotesAPI.Services
 {
     public interface INoteCollectionService:ICollectionService<Note>
     {
-         Task<List<Note>> GetNotesByOwnerId(Guid ownerId);
+       Task<List<Note>> GetNotesByOwnerId(Guid ownerId);
+
     }
 }

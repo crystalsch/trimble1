@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Note } from '../note';
 import { NoteService } from '../services/note.service';
 
@@ -10,7 +10,7 @@ import { NoteService } from '../services/note.service';
 export class NoteComponent implements OnInit, OnChanges {
 
   notes: Note[];
-  note:Note;
+  note: Note;
 
   @Output() emitSelectedNote = new EventEmitter<string>();
   @Input() selectedCategoryId: string;
@@ -40,12 +40,14 @@ export class NoteComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.noteService.getFilteredNotes(this.selectedCategoryId).subscribe((notes:Note[])=>{this.notes=notes})
-    this.noteService.getSpecificNotes(this.selectedWord).subscribe((notes:Note[])=>{this.notes=notes})
+    this.noteService.getFilteredNotes(this.selectedCategoryId).subscribe((notes: Note[]) => { this.notes = notes })
+    this.noteService.getSpecificNotes(this.selectedWord).subscribe((notes: Note[]) => { this.notes = notes });
   }
 
   ngOnInit(): void {
-    this.noteService.getNotes().subscribe((notes:Note[])=>{this.notes=notes})
+    const allNotes = this.noteService.getNotes().subscribe((notes: Note[]) => {
+      this.notes = notes
+    });
   }
 
 

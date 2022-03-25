@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NotesAPI.Services
 {
-    interface IOwnerCollectionService : ICollectionService<Owner>
-    {
+    public interface IOwnerCollectionService : ICollectionService<Owner>
+    { 
     }
 }

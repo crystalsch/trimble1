@@ -22,8 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { SearchComponent } from './search/search.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpMockApiInterceptor } from './services/http-mock-api.interceptor';
 import { EditNoteComponent } from './edit-note/edit-note.component';
+import { NoteService } from './services/note.service';
 
 @NgModule({
   declarations: [
@@ -52,11 +52,7 @@ import { EditNoteComponent } from './edit-note/edit-note.component';
     CommonModule,
     HttpClientModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpMockApiInterceptor,
-    multi: true
-  }
+  providers: [NoteService
   ],
   bootstrap: [AppComponent]
 })

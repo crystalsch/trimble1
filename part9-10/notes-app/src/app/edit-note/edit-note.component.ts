@@ -23,18 +23,18 @@ export class EditNoteComponent implements OnInit {
 
   receiveNoteId(noteId: string) {
     this.noteId = noteId;
-    console.log("aaaaaaaaaa", noteId)
   }
 
 
   public editNote() {
     const note: Note = {
+      id: this.note.id,
       title: this.note.title,
       description: this.note.description,
       categoryId: this.note.categoryId
     }
     console.log(this.type)
-    this.noteService.editNote(note).subscribe();
+    this.noteService.editNote(note).subscribe(res => console.log(res));
   }
 
   ngOnInit(): void {

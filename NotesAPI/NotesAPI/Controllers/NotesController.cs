@@ -14,11 +14,11 @@ namespace NotesAPI.Controllers
     [ApiController]
     public class NotesController : ControllerBase
     {
-        //INoteCollectionService _noteCollectionService;
-        //public NotesController(INoteCollectionService noteCollectionService)
-        //{
-        //    _noteCollectionService = noteCollectionService ?? throw new ArgumentNullException(nameof(noteCollectionService));
-        //}
+        INoteCollectionService _noteCollectionService;
+        public NotesController(INoteCollectionService noteCollectionService)
+        {
+            _noteCollectionService = noteCollectionService ?? throw new ArgumentNullException(nameof(noteCollectionService));
+        }
 
         //[HttpPut("{id},{idO}")]
         //public IActionResult UpdateNote(Guid id, Guid idO, [FromBody] Note note)
@@ -41,16 +41,16 @@ namespace NotesAPI.Controllers
         //    return Ok(_notes);
         //}
 
-        //[HttpPut("{id}")]
-        //public IActionResult UpdateNoteId(Guid id, [FromBody] Note note)
-        //{
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateNoteIdAsync(Guid id, [FromBody] Note note)
+        {
 
-        //    if (_noteCollectionService.Update(id, note))
-        //    {
-        //        return Ok("the note update");
-        //    }
-        //    return NotFound("note not found");
-        //}
+            if (await _noteCollectionService.Update(id, note))
+            {
+                return Ok("the note update");
+            }
+            return NotFound("note not found");
+        }
 
         //[HttpDelete("{id},{idO}")]
         //public IActionResult DeleteNote(Guid id, Guid idO)
@@ -80,16 +80,16 @@ namespace NotesAPI.Controllers
         //    return Ok("the notes was deleted");
         //}
 
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteNote(Guid id)
-        //{
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteNoteAsync(Guid id)
+        {
 
-        //    if (_noteCollectionService.Delete(id))
-        //    {
-        //        return Ok("the notes was deleted");
-        //    }
-        //    return NotFound("note not found");
-        //}
+            if (await _noteCollectionService.Delete(id))
+            {
+                return Ok("the note was deleted");
+            }
+            return NotFound("note not found");
+        }
 
         [HttpPost]
         public async  Task<IActionResult> CreateNotes([FromBody] Note note)
@@ -97,7 +97,7 @@ namespace NotesAPI.Controllers
             if (note == null)
                 return BadRequest("Note is null");
             await _noteCollectionService.Create(note);
-            return Ok(await _noteCollectionService.GetAll();
+            return Ok(await _noteCollectionService.GetAll());
         }
 
         [HttpGet]
@@ -106,18 +106,18 @@ namespace NotesAPI.Controllers
             return Ok(await _noteCollectionService.GetAll());
         }
 
-        //[HttpGet("{id}")]
-        //public IActionResult GetNote(Guid id)
-        //{
-        //    try
-        //    {
-        //        return Ok(_noteCollectionService.Get(id));
-        //    }
-        //    catch (NoteNotFoundException ex)
-        //    {
-        //        return NotFound(ex.Message);
-        //    }
-        //}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetNoteAsync(Guid id)
+        {
+            try
+            {
+                return Ok(await _noteCollectionService.Get(id));
+            }
+            catch (NoteNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
 
         //[HttpGet(" owner/{oId}")]
         //public IActionResult GetNotesO(Guid oId)

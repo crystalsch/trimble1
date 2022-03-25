@@ -8,8 +8,9 @@ namespace NotesAPI.Settings
 {
     public class MongoDBSettings: IMongoDBSettings
     {
-        string IMongoDBSettings.NoteCollectionName { get; set; }
-        string IMongoDBSettings.ConnectionString { get; set; }
-        string IMongoDBSettings.DatabaseName { get; set; }
+        public string OwnerCollectionName { get; set; }
+        public string NoteCollectionName { get; set; }
+        public string ConnectionString { get; set; }
+        public string DatabaseName { get; set; }
     }
 }

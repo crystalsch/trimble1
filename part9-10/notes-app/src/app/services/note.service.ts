@@ -40,7 +40,7 @@ export class NoteService {
     { name: 'Doing', id: '3' }
   ]
 
-  readonly baseUrl = "https://localhost:4200";
+  readonly baseUrl = "http://localhost:5000/notes/";
 
   readonly httpOptions = {
     headers: new HttpHeaders({
@@ -54,7 +54,7 @@ export class NoteService {
   getFilteredNotes(categoryId: string): Observable<Note[]> {
     return this.httpClient
       .get<Note[]>(
-        this.baseUrl + `/notes`,
+        this.baseUrl,
         this.httpOptions
       )
       .pipe(
@@ -65,32 +65,40 @@ export class NoteService {
   getSpecificNotes(word: string): Observable<Note[]> {
     return this.httpClient
       .get<Note[]>(
-        this.baseUrl + `/notes`,
+        this.baseUrl,
         this.httpOptions
       )
       .pipe(
-        map((notes: Note[]) => { return notes.filter((note) => note.title.includes(word) || note.description.includes(word)) })
+        map((notes: Note[]) => {
+
+          let x = notes.filter((note) => {
+            (note.title.includes(word) || note.description.includes(word))
+          }
+          );
+          return x;
+
+        })
       );
   }
 
   addNote(note: Note) {
-    return this.httpClient.post(this.baseUrl + "/notes", note, this.httpOptions);
+    return this.httpClient.post(this.baseUrl, note, this.httpOptions);
   }
 
   editNote(note: Note) {
-    return this.httpClient.put(this.baseUrl + "/notes"+ note.id, note, this.httpOptions);
+    return this.httpClient.put(this.baseUrl + note.id, note, this.httpOptions);
   }
 
   getNotes(): Observable<Note[]> {
-    return this.httpClient.get<Note[]>(this.baseUrl + `/notes`, this.httpOptions);
+    return this.httpClient.get<Note[]>(this.baseUrl, this.httpOptions);
   }
 
-  getNote(noteId:string): Observable<Note> {
-    return this.httpClient.get<Note>(this.baseUrl + `/notes/` + noteId, this.httpOptions);
+  getNote(noteId: string): Observable<Note> {
+    return this.httpClient.get<Note>(this.baseUrl + noteId, this.httpOptions);
   }
 
   deleteNote(noteId: string): Observable<Note> {
-    let idUrl = '/notes/' + noteId;
+    let idUrl = noteId;
     return this.httpClient.delete<Note>(this.baseUrl + idUrl);
   }
 

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +10,7 @@ namespace NotesAPI.Models
 {
     public class Owner 
     {
+        
         public Guid Id { get; set; }
         public string Name { get; set; }
 
